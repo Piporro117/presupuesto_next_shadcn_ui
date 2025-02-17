@@ -14,6 +14,8 @@ import {
 
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
+import { useEffect } from "react"
+import { toast } from "sonner"
 
 const Form = FormProvider
 
@@ -166,6 +168,41 @@ const FormMessage = React.forwardRef<
 })
 FormMessage.displayName = "FormMessage"
 
+
+// Tast de shadcn ui parass mostrar errores de las validcaciones
+const ToastFormMessage = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, children, ...props }, ref) => {
+  const { error, formMessageId } = useFormField();
+  const body = error ? String(error?.message) : children;
+
+  useEffect(() => {
+    if (error) {
+      toast("Error de validacion", {
+        description: String(error.message),
+      });
+    }
+  }, [error, toast]);
+
+  if (!body) {
+    return null;
+  }
+
+  return (
+    <div
+      ref={ref}
+      id={formMessageId}
+      className={className}
+      {...props}
+    >
+      {body}
+    </div>
+  );
+});
+ToastFormMessage.displayName = 'TastFormMessage'
+
+
 export {
   useFormField,
   Form,
@@ -175,4 +212,5 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+  ToastFormMessage
 }

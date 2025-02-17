@@ -2,7 +2,9 @@
  * Archivo donde se encuantras distintas datas empeladas en el proyecto
  */
 
-export const categorias = [
+import { Categoria } from "@/types";
+
+export const categorias: Categoria[] = [
     { id: '1', nombre: 'Ahorro' , icon: 'ahorro'},
     { id: '2', nombre: 'Comida' , icon: 'comida'},
     { id: '3', nombre: 'Casa' , icon: 'casa'},

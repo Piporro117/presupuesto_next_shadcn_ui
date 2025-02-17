@@ -2,6 +2,7 @@ import {
     Dialog,
     DialogClose,
     DialogContent,
+    DialogDescription,
     DialogFooter,
     DialogHeader,
     DialogTitle,
@@ -10,6 +11,7 @@ import {
 
 import { Plus } from 'lucide-react'
 import FormularioGasto from "./formularioGasto"
+import { Separator } from "../ui/separator"
 
 export default function ModalDialog() {
 
@@ -22,6 +24,10 @@ export default function ModalDialog() {
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="uppercase text-center"> Nuevo Gasto </DialogTitle>
+                    <DialogDescription>
+                    </DialogDescription>
+
+                    <Separator />
                 </DialogHeader>
 
                 <FormularioGasto />

@@ -12,5 +12,6 @@ export const formularioDefinicionSchema = z.object({
 export const formularioNuevoGastoSchema = z.object({
     nombreGasto: z.string().min(1, "El nombre del gasto es obligatorio"),
     cantidad: z.string().min(1, "La cantidad es necesaria"),
-    categoria: z.string().min(1, "Debes seleccionar una categoria")
+    categoria: z.string().min(1, "Debes seleccionar una categoria"),
+    fechaGasto: z.date({ required_error: "La fecha del gaasto es obligatoria"})
 })
